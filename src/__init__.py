@@ -6,9 +6,9 @@ import matplotlib.pyplot as plt
 import os
 import time
 
-LEARNING_RATE_BASE = 0.1
-LEARNING_RATE_DECAY = 0.5
-LEARNING_RATE_STEP = 50
+LEARNING_RATE_BASE = 0.5
+LEARNING_RATE_DECAY = 0.95
+LEARNING_RATE_STEP = 100
 
 def normalize_cols(m):
     col_max = m.max(axis=0)
@@ -18,6 +18,7 @@ def normalize_cols(m):
 start = time.clock()
 if __name__ == "__main__":
     os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
+    os.environ["CUDA_DEVICE_ORDER"] = "PCI_BUS_ID"
     sess = tf.Session()
     # import data
     data = pd.read_csv('input.csv')
